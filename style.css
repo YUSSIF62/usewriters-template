@@ -229,8 +229,6 @@ header{
     text-align: center;
 }
 .about-intro p{
-    text-align: center;
-    width:700px;
     margin:10px auto;
     font-weight: 500;
     line-height: 25px;
@@ -340,21 +338,24 @@ header{
     padding:60px 0;
 }
 .faqs-content h1{
-    font-size: 40px;
+    font-size: 45px;
     text-align: center;
     font-family: "Raleway";
 }
 
 .faqs-content .faqs-intro{
-    width:700px;
-    text-align: center;
     line-height: 28px;
     font-size: 17px;
     margin:10px auto;
 }
 
+.faqs-content-row{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:50px;
+    margin-top: 20px;
+}
 .accordion-moja{
-    width:700px;
     margin:10px auto;
 }
 .accordion-question{
@@ -392,8 +393,6 @@ header{
       -o-transition:all 0.5s;
 }
 .accordion-answer{
-    width:700px;
-    margin:auto;
     max-height: 0;
     overflow: hidden;
     transition:max-height 1s ease;
@@ -411,7 +410,13 @@ header{
     -ms-border-radius: 0px 0px 5px 5px;
     -o-border-radius: 0px 0px 5px 5px;
 }
-
+.faqs-column img{
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
 
 /* Contact Section Styling */
 #contact-section{
@@ -649,15 +654,60 @@ footer{
     margin-bottom: 10px;
 }
 
+input[type='file']{
+    display:none;
+}
+label.upload{
+    width:100px;
+    position:relative;
+    text-align: center;
+    font-size:10px;
+    background:rgb(121, 241, 121);
+    padding:10px 0;
+    display:inline-block;
+    color:white;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    cursor: pointer;
+}
 .order-form-row{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     margin:10px 0;
     gap:20px;
 }
+
+.file-upload-row{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+
+.file-result,
+.ticket-file-result{
+    padding:5px 20px;
+    background:rgba(130, 248, 130, 0.3);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    display:none;
+}
+.file-result span,
+.ticket-file-result span{
+    font-size:15px;
+}
+
+
+
 .order-form-control,
 .login-control,
-.signup-control{
+.signup-control,
+.forget-control{
     width:100%;
     height:45px;
     outline:none;
@@ -719,7 +769,8 @@ footer{
 }
 
 /* Login Modal */
-#login-modal{
+#login-modal,
+#forgot-password-modal{
     position:fixed;
     top:0;
     left:0;
@@ -730,7 +781,8 @@ footer{
     justify-content: center;
     align-items: center;
 }
-.login-modal-content{
+.login-modal-content,
+.forgot-modal-content{
     background:whitesmoke;
     padding:50px 20px;
     width: 500px;
@@ -743,7 +795,8 @@ footer{
     padding:40px 20px;
     position: relative;
 }
-.login-modal-content h1{
+.login-modal-content h1,
+.forgot-modal-content h1{
     text-transform: uppercase;
     font-family: "Raleway";
     font-weight: 500;
@@ -751,23 +804,33 @@ footer{
     text-align: center;
 }
 
-.login-modal-content p{
+.login-modal-content p,
+.forgot-modal-content p{
     text-align: center;
     font-weight: 500;
     margin-bottom: 30px;
 }
-.login-form{
+.login-form,
+.forgot-form{
     width:80%;
     margin:auto;
 }
-.login-form-row{
+.login-form-row,
+.forget-form-row{
     margin-bottom: 20px;
 }
-.login-form-row label{
+.login-form-row label,
+.forget-form-row label{
      display: block;
      margin-bottom: 5px;
 }
-
+.login-switch-btn{
+    cursor:pointer;
+    margin-top:20px;
+}
+.login-switch-btn span{
+    color:rgb(13, 196, 13);
+}
 /* Sign up Modal Styling */
 #signup-modal{
     position:fixed;
@@ -816,7 +879,13 @@ footer{
     display: block;
     margin-bottom: 5px;
 }
-
+.signup-switch-btn{
+    cursor:pointer;
+    margin-top:20px;
+}
+.signup-switch-btn span{
+    color:rgb(13, 196, 13);
+}
 
 /* My account Styling */
 #my-account{
@@ -1049,7 +1118,9 @@ td, th {
     }
 
     .order-modal-content,
-    .login-modal-content{
+    .login-modal-content,
+    .signup-modal-content,
+    .forgot-modal-content{
        width:90%;
     }
 }

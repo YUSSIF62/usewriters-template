@@ -79,7 +79,39 @@ for(let i = 0; i < switch_btns.length; i++){
   }
 
 
+  /* File uploading implementation */
 
+  let fileInput = document.getElementById("file-input");
+  let file_result = document.querySelector(".file-result");
+  let file_name = document.querySelector('.file-result span');
+
+  let ticketInput = document.getElementById("ticket-file-input");
+  let ticket_file_result = document.querySelector(".ticket-file-result");
+  let ticket_file_name = document.querySelector('.ticket-file-result span');
+
+  let fileUpload = (file, result, name)=>{
+    for (i of file.files){   
+        let reader = new FileReader();
+
+        reader.onload = () =>{ 
+             result.style.display = "block";
+             name.innerHTML = i.name;
+        }
+        reader.readAsDataURL(i);
+    }
+  }
+
+  fileInput.addEventListener("change", ()=>{
+      fileUpload(fileInput, file_result, file_name);
+  })
+  ticketInput.addEventListener("change", ()=>{
+      fileUpload(ticketInput, ticket_file_result, ticket_file_name);
+  })
+  
+
+
+
+  
   /* modal implementation */
   let fire_the_modal = (btns, modal_container, close_btn) => {
     btns.forEach( btn => {
@@ -184,4 +216,31 @@ $(function(){
           });
         } 
   });
+})
+
+
+//switch modal functionality
+let switch_login_btn = document.querySelector(".login-switch-btn")
+let switch_signup_btn = document.querySelector(".signup-switch-btn")
+
+switch_login_btn.addEventListener("click", ()=>{
+      signup_modal.style.display = "none"
+      login_modal.style.display = "flex"
+})
+switch_signup_btn.addEventListener("click", ()=>{
+      login_modal.style.display = "none"
+      signup_modal.style.display = "flex"
+})
+
+//trigger forgot password functionality
+let forgot_btn = document.querySelector(".forgot-btn")
+let forgot_modal = document.querySelector("#forgot-password-modal")
+let close_forget_btn = document.querySelector(".close-forgot-btn")
+
+forgot_btn.addEventListener("click", ()=>{
+     login_modal.style.display = "none"
+     forgot_modal.style.display = "flex"
+})
+close_forget_btn.addEventListener("click", ()=>{
+    forgot_modal.style.display = "none"
 })
